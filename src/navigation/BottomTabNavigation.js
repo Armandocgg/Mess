@@ -1,31 +1,43 @@
 import React from 'react';
+import {View } from 'react-native';
 
 import { createBottomTabNavigator } from 'react-navigation';
 import { HomeTabNavigation } from './HomeTabNavigation';
 import PeopleScreen from '@screens/PeopleScreen';
+import GamesScreen from '@screens/GamesScreen';
+import CameraScreen from '@screens/CameraScreen';
 
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import Icon from '@components/Icon';
 
 const HomeTabIcon = ({ tintColor }) => (
-  <Ionicons name="ios-home" size={20} color={tintColor} />
+  <View>
+  <Icon name="ios-home" color={tintColor} />
+  </View>
 );
 
 const PeopleTabIcon = ({ tintColor }) => (
-  <Ionicons name="ios-people" size={20} color={tintColor} />
+  <View>
+  <Icon name="ios-people" color={tintColor} />
+  </View>
 );
 
 const CameraTabIcon = ({ tintColor }) => (
-  <Ionicons name="ios-camera" size={20} color={tintColor} />
+  <View>
+  <Icon name="ios-camera" color={tintColor} type="rounded"/>
+  </View>
 );
 
 const GameTabIcon = ({ tintColor }) => (
-  <Ionicons name="ios-people" size={20} color={tintColor} />
+  <View>
+  <Icon name="ios-games" color={tintColor} />
+  </View>
 );
 
 const ImagenTabIcon = ({ tintColor }) => (
-  <Ionicons name="ios-image" size={20} color={tintColor} />
+  <View>
+  <Icon name="ios-image" color={tintColor} />
+  </View>
 );
-
 
 export const BottomTabNavigation = createBottomTabNavigator(
   {
@@ -44,21 +56,24 @@ export const BottomTabNavigation = createBottomTabNavigator(
       }
     },
     CamaraScreen:{
-      screen: PeopleScreen,
-      navigationOptions: {
+      screen: CameraScreen,
+      navigationOptions: ({ navigation })=>({
         header: null,
-        tabBarIcon: CameraTabIcon
-      }
+        tabBarIcon: CameraTabIcon,
+        tabBarOnPress: ({ navigation })=>{
+          navigation.navigate('CameraScreen');
+        }
+      })
     },
     GameScreen:{
-      screen: PeopleScreen,
+      screen: GamesScreen,
       navigationOptions: {
         header: null,
         tabBarIcon: GameTabIcon
       }
     },
     PhotoScreen:{
-      screen: PeopleScreen,
+      screen: GamesScreen,
       navigationOptions: {
         header: null,
         tabBarIcon: ImagenTabIcon

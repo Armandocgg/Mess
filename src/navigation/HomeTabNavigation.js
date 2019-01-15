@@ -2,7 +2,6 @@ import { createMaterialTopTabNavigator } from 'react-navigation';
 import MessagesScreen from '@screens/MessagesScreen';
 import ActiveScreen from '@screens/ActiveScreen';
 
-
 export const HomeTabNavigation = createMaterialTopTabNavigator(
   {
     MessagesScreen: {
